@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { SiSimplelogin } from "react-icons/si";
-import { Login } from "../../api/auth/auth.js";
 import { useDispatch, useSelector } from "react-redux";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { setUser } from "../../redux/auth/authSlice.js";
+import {Navigate} from "react-dom"
+import { REGISTER_ROUTE } from "../../contants/ListUrl.js";
 import { loginUser } from "../../redux/auth/authActions.js";
+import { toast } from "react-toastify";
+import Spinner from "../Spinner.jsx";
+import { Link } from "react-router";
 const SignIn = () => {
   
   const [ShowPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { loading,error } = useSelector((state) => state.auth);
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
   const formSubmission = (data) => {
@@ -26,13 +29,16 @@ const SignIn = () => {
     //   });
   };
   useEffect(() => {
-    formSubmission();
-  }, []);
+   toast(error,{
+    type:"error",
+    autoClose:1500,
+   })
+  }, [error]);
   return (
     <>
       <div className="flex min-h-full w-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <SiSimplelogin className="w-10 h-10 ms-36 text-teal-400" />
+          <SiSimplelogin className="w-10 h-10 ms-20 text-teal-400 md:ms-36 lg:ms-36" />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             Sign in to your account
           </h2>
@@ -107,18 +113,20 @@ const SignIn = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign in
+                Sign in {loading?<span className="ml-3"><Spinner/></span>:null}
               </button>
             </div>
           </form>
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Not a member?
-            <a
-              href="#"
-              className="font-semibold text-indigo-600 hover:text-indigo-500"
+           <Link to={REGISTER_ROUTE}>
+           <button
+         type="button"
+              className="font-semibold ml-3 text-indigo-600 hover:text-indigo-500"
             >
-              Start a 14 day free trial
-            </a>
+              Create New Account
+            </button>
+           </Link>
           </p>
         </div>
       </div>

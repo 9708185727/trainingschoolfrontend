@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../components/Footer'
 
 const Service = () => {
   return (
@@ -7,7 +8,7 @@ const Service = () => {
       Serice page
     </div>
    
-
+<Footer/>
     </>
   )
 }

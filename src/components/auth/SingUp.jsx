@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GiArchiveRegister } from "react-icons/gi";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
-import { Register } from "../../api/auth/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../../redux/auth/authActions";
+import { toast } from "react-toastify";
+import { Link } from "react-router";
+import { LOGIN_ROUTE } from "../../contants/ListUrl";
 
 const SignUp = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showCPassword, setShowCPassword] = useState(false);
-
+ const {loading,error} =useSelector((state)=>state.auth)
+const dispatch=useDispatch()
   const {
     register,
     handleSubmit,
@@ -16,23 +21,20 @@ const SignUp = () => {
   } = useForm();
 
   const formSubmission = (data) => {
-    Register(data)
-      .then((response) => {
-        
-        console.log("Registration successful:", response.data);
-        alert("Registration Successful!");
-      })
-      .catch((error) => {
-        console.error("Error during registration:", error.response?.data);
-        alert(error.response?.data?.message || "Registration failed.");
-      });
+  dispatch(registerUser(data))
+   
   };
+  useEffect(()=>{
+    toast(error,{
+      type:"error"
+    })
+  },[error])
 
   return (
     <div className="flex min-h-1/2 w-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <GiArchiveRegister className="w-10 h-10 mx-auto text-teal-400" />
-        <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">
+        <GiArchiveRegister className="w-10 h-10 ms-20 text-teal-400 md:ms-36 lg:ms-36" />
+        <h2 className="mt-5 text-center text-2xl font-bold tracking-tight text-gray-900">
           Create an account
         </h2>
       </div>
@@ -212,13 +214,15 @@ const SignUp = () => {
         </form>
         <p className="mt-10 text-center text-sm/6 text-gray-500">
           a member?
-          <a
-            href="#"
-            className="font-semibold text-indigo-600 hover:text-indigo-500 ms-2"
-          >
-            Already Have Account{" "}
-          </a>
-        </p>
+         <Link to={LOGIN_ROUTE}>
+         <button
+          type="button"
+          className="font-semibold text-indigo-600 hover:text-indigo-500 ms-2"
+        >
+          Already Have Account{" "}
+        </button>
+         </Link>
+        </p> 
       </div>
     </div>
   );

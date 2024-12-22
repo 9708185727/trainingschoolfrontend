@@ -1,28 +1,22 @@
 import axios from "axios";
-const BaseApiUrl = "http://localhost:5000";
-const Login = async ({ email, password }) => {
-  try {
-    const response = await axios.post(`${BaseApiUrl}/api/auth/login`, {
-      email,
-      password,
-    });
-    return response;
-  } catch (error) {
-    console.log(error.message);
-  }
+
+import config from "../../config/config";
+const Login = async ({email,password}) => {
+  const response = await axios.post(`${config.baseApiUrl}/api/auth/login`,{
+    email,
+    password,
+  });
+  return response;
 };
 
 const Register = async (data) => {
   try {
-    const response = await axios.post(`${BaseApiUrl}/api/auth/register`, {
+    const response = await axios.post(`${config.baseApiUrl}/api/auth/register`, {
       name: data.name,
       email: data.email,
       password: data.password,
       confirmPassword: data.confirmPassword,
       role: data.role,
-
-      
-
       profile: {
         bio: data.bio,
         resume: data.resume,
