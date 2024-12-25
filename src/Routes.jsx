@@ -30,6 +30,7 @@ import AuthLayout from "./layouts/AuthLayout.jsx";
 import OppDetailView from "./pages/opportunity/OppDetailView.jsx";
 import OppList from "./pages/opportunity/OppList.jsx";
 import AddOpp from "./pages/opportunity/AddOpp.jsx";
+import EditOpp from "./pages/opportunity/EditOpp.jsx";
 const Routes = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -41,6 +42,7 @@ const Routes = () => {
             <Route index element={<OppList />} />
             <Route path={":id"} element={<OppDetailView />} />
             <Route path={"add"} element={<AddOpp/>} />
+            <Route path={"edit/:id"} element={<EditOpp/>} />
           </Route>
         </Route>
         <Route path={ABOUT_ROUTE} element={<About />} />

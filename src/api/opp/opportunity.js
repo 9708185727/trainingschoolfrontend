@@ -10,7 +10,8 @@ const getOpportunities=async()=>{
   catch (error) {
     console.log(error)
   }
-//   const getOpps = async ({
+}
+//   const getOpportunities = async ({
 //     limit = 10,
 //     sort = `{"createdAt":-1}`,
 //     filters = {},
@@ -21,7 +22,7 @@ const getOpportunities=async()=>{
 //     );
 //     return response;
 //   };
-}
+// }
 const getOpportunityById=async(id)=>{
   try {
   const response=await axios.get(`${config.baseApiUrl}/api/opportunities/${id}`)
@@ -42,9 +43,27 @@ const addOpportunity = async (data) => {
   });
   return response;
 };
+const editOpportunity = async (id, data) => {
+  const response = await axios.put(`${config.baseApiUrl}/api/opportunities/${id}`,data,{
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    }
+  );
+  return response;
+};
+const deleteOpportunity = async (id) => {
+  const response = await axios.delete(`${config.baseApiUrl}/api/opportunities/${id}`,{
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    }
+  );
+  return response;
+};
 
 
-export {getOpportunities,getOpportunityById,addOpportunity}
+export {getOpportunities,getOpportunityById,addOpportunity,editOpportunity,deleteOpportunity}
 
 // const getTypes = async () => {
 //   return await axios.get(`${config.baseApiUrl}/api/opportunities/types`);
@@ -56,15 +75,7 @@ export {getOpportunities,getOpportunityById,addOpportunity}
 // };
 
 
-// const editOpp = async (id, data) => {
-//   const response = await axios.put(`${config.baseApiUrl}/api/Opps/${id}`,data,{
-//       headers: {
-//         Authorization: `Bearer ${authToken}`,
-//       },
-//     }
-//   );
-//   return response;
-// };
+
 // const deleteOpp = async (id) => {
 //   const response = await axios.delete(
 //     `${config.baseApiUrl}/api/Opps/${id}`,

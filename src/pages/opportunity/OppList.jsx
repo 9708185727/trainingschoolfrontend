@@ -7,6 +7,7 @@ import { NavLink } from "react-router";
 import OppCard from "../../components/opportunity/OppCard";
 const OppList = () => {
   const [opp,setOpp] =useState([])
+ 
   useEffect(()=>{
       getOpportunities().then((response)=>{
         setOpp(response.data)

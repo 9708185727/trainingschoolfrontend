@@ -1,28 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { addOpp } from "./oppActions";
+import { addOpp, editOpp } from "./oppActions";
 import { getAllOpportunity } from "./oppActions";
 
 const oppSlice = createSlice({
   name: "opp",
   initialState: {
     loading: false,
-    opportunity: null,
+    opportunity:[],
     error: null,
   },
-  reducers: {
- 
-  },
+  reducers: {},
   extraReducers: (builder) => {
-     builder
-     .addCase(addOpp.pending, (state) => {
+    builder
+      .addCase(addOpp.pending, (state) => {
         state.loading = true;
-        state.error=null;
+        state.error = null;
       })
       .addCase(addOpp.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.opportunity = action.payload;
         state.loading = false;
-
       })
       .addCase(addOpp.rejected, (state, action) => {
         state.error = action.payload;
@@ -30,19 +27,31 @@ const oppSlice = createSlice({
       })
       .addCase(getAllOpportunity.pending, (state) => {
         state.loading = true;
-        state.error=null;
+        state.error = null;
       })
       .addCase(getAllOpportunity.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.opportunity = action.payload;
         state.loading = false;
-
       })
-     
-     .addCase(getAllOpportunity.rejected, (state, action) => {
+
+      .addCase(getAllOpportunity.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
       })
-  
+
+      .addCase(editOpp.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(editOpp.fulfilled, (state, action) => {
+        state.opportunity = action.payload;
+        state.loading = false;
+      })
+
+      .addCase(editOpp.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loading = false;
+      });
   },
 });
 

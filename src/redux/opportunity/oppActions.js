@@ -1,12 +1,27 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addOpportunity } from "../../api/opp/opportunity.js";
+import { addOpportunity,editOpportunity } from "../../api/opp/opportunity.js";
 
 const addOpp = createAsyncThunk(
   "opp/add",
   async (data, { rejectWithValue }) => {
     try {
       const response = await addOpportunity(data);
-  console.log(response)
+      console.log(response)
+      return response.data;
+    } catch (error) {
+      const errorMessage =
+        error.response?.data || error.message || "Something went wrong";
+      return rejectWithValue(errorMessage);
+    }
+  }
+);
+const editOpp = createAsyncThunk(
+  "opp/edit",
+  async ({id, data} , { rejectWithValue }) => {
+    try {
+      console.log(id)
+      const response = await editOpportunity(id, data);
+      console.log(response);
       return response.data;
     } catch (error) {
       const errorMessage =
@@ -41,4 +56,4 @@ const getAllOpportunity = createAsyncThunk(
   );
 
 
-export { addOpp ,getAllOpportunity,getProductType};
+export { addOpp ,editOpp,getAllOpportunity,getProductType};
