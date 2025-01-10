@@ -3,9 +3,9 @@ import { getOpportunityById } from "../../api/opp/opportunity";
 import { Link } from "react-router";
 import Footer from "../../components/Footer";
 import { useParams, useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { AddOppToCart } from "../../redux/cart/cartSlice";
-import { set } from "react-hook-form";
+
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaCartPlus } from "react-icons/fa6";
 import { OPP_ROUTE } from "../../contants/ListUrl";

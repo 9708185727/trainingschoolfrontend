@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import { toast } from 'react-toastify';
 import { MdDeleteForever } from "react-icons/md";

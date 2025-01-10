@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { SiSimplelogin } from "react-icons/si";
 import { useDispatch, useSelector } from "react-redux";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import {Navigate} from "react-dom"
+
 import { REGISTER_ROUTE } from "../../contants/ListUrl.js";
 import { loginUser } from "../../redux/auth/authActions.js";
 import { toast } from "react-toastify";

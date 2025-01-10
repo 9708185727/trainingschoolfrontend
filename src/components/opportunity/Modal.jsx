@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Title from "../Title";
 import { RxCross2 } from "react-icons/rx";
 const Modal = ({isOpen=false,setIsOpen,label,body,actions}) => {

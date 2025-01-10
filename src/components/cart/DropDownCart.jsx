@@ -2,7 +2,7 @@ import React from "react";
 
 import CartOpp from "./CartOpp";
 import { useSelector } from "react-redux";
-import { FaCompressArrowsAlt } from "react-icons/fa";
+
 import { MdCancel } from "react-icons/md";
 
 const DropDownCart = ({ showcart, setShowCart }) => {

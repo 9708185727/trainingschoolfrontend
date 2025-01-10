@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 import { FaCartShopping, FaSchool } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../redux/auth/authSlice";
-import CartOpp from "./cart/CartOpp";
+
 import DropDownCart from "./cart/DropDownCart";
 
 function Header() {

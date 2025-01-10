@@ -3,7 +3,7 @@ import OppForm from '../../components/opportunity/OppForm'
 import { useNavigate, useParams } from 'react-router'
 import Footer from '../../components/Footer'
 import Title from '../../components/Title'
-import { editOpportunity } from '../../api/opp/opportunity'
+
 import { getOpportunityById } from '../../api/opp/opportunity'
 import Spinner from '../../components/Spinner'
 import { toast } from 'react-toastify'
