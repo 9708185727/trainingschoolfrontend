@@ -18,7 +18,7 @@ import {
 import Home from "./pages/Home.jsx";
 
 
-import Login from "./pages/authpage/login.jsx";
+import Login from "./pages/authpage/Login.jsx";
 import Register from "./pages/authpage/Register.jsx";
 import About from "./pages/About.jsx";
 import Service from "./pages/Service.jsx";

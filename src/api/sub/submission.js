@@ -25,7 +25,10 @@ const authToken = localStorage.getItem("authToken");
   };
 const getSubmissionById=async(id)=>{
   try {
-  const response=await axios.get(`${config.baseApiUrl}/api/submissions/${id}`)
+  const response=await axios.get(`${config.baseApiUrl}/api/submissions/${id}`,{
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    }})
   // console.log(response)
   return response
   } 
