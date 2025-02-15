@@ -16,9 +16,6 @@ import {
   ABOUT_ROUTE,
 } from "./contants/ListUrl";
 import Home from "./pages/Home.jsx";
-
-
-import Login from "./pages/authpage/Login.jsx";
 import Register from "./pages/authpage/Register.jsx";
 import About from "./pages/About.jsx";
 import Service from "./pages/Service.jsx";
@@ -35,6 +32,7 @@ import SubDetailView from "./pages/submission/SubDetailView.jsx";
 import SubList from "./pages/submission/SubList.jsx";
 import AddSub from "./pages/submission/AddSub.jsx";
 import EditSub from "./pages/submission/EditSub.jsx";
+import Login from "./pages/authpage/Login.jsx";
 
 const Routes = () => {
   const router = createBrowserRouter(
